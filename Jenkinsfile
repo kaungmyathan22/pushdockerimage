@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t kaungmyathan/jenkinstest:$BUILD_NUMBER ./pushdockerimage/'
+                sh 'docker build -t kaungmyathan/jenkinstest:$BUILD_NUMBER .'
             }
         }
         stage('Docker Login') {
