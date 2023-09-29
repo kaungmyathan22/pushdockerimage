@@ -12,17 +12,17 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t kaungmyathan/jenkinstest:$BUILD_NUMBER .'
+                sh 'sudo docker build -t kaungmyathan/jenkinstest:$BUILD_NUMBER .'
             }
         }
         stage('Docker Login') {
             steps {
-                sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDS_PSW | sudo docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
             }
         }
         stage('Docker Push') {
             steps {
-                sh 'docker push kaungmyathan/jenkinstest:$BUILD_NUMBER'
+                sh 'sudo docker push kaungmyathan/jenkinstest:$BUILD_NUMBER'
             }
         }
     }
